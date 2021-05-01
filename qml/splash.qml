@@ -4,6 +4,7 @@ import QtQuick.Controls 2.15
 import "controls"
 import QtGraphicalEffects 1.15
 import QtQuick.Timeline 1.0
+import "pages"
 
 Window {
     id: splashScreen1
@@ -80,7 +81,11 @@ Window {
             background: Rectangle{
                            color: "#55aaff"
                        }
-            onClicked: internal.checkLogin(txtUsername.text,txtPassword.text)
+            onClicked: {
+                internal.checkLogin(txtUsername.text,txtPassword.text)
+                backend.welcomeText(txtUsername.text)
+            }
+
         }
 
         TextField {
@@ -94,7 +99,10 @@ Window {
             anchors.horizontalCenter: parent.horizontalCenter
             placeholderText: qsTr("Password")
             echoMode: "Password"
-
+            Keys.onEnterPressed: {
+                internal.checkLogin(txtUsername.text,txtPassword.text)
+                backend.welcomeText(txtUsername.text)
+            }
         }
 
         TextField {
@@ -107,6 +115,10 @@ Window {
             anchors.horizontalCenterOffset: 0
             anchors.horizontalCenter: parent.horizontalCenter
             placeholderText: qsTr("Username")
+            Keys.onEnterPressed: {
+                internal.checkLogin(txtUsername.text,txtPassword.text)
+                backend.welcomeText(txtUsername.text)
+            }
 
         }
         Button {

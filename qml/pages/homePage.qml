@@ -8,7 +8,6 @@ import "../controls"
 
 Item {
     id: item1
-    property string username
 
     Rectangle {
         id: rectangle
@@ -32,10 +31,10 @@ Item {
             anchors.leftMargin: 0
             anchors.topMargin: 0
 
-            Text {
-                id: text1
+            Label {
+                id: txtWelcome
                 color: "#f7f6f6"
-                text: qsTr("WELCOME " + username)
+                text: qsTr("Welcome")
                 anchors.fill: parent
                 font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
@@ -205,6 +204,14 @@ Item {
                 }
             }
         }
+    }
+
+    Connections {
+        target: backend
+
+        function onSetName(name){
+                    txtWelcome.text = name
+                }
     }
 
 }
