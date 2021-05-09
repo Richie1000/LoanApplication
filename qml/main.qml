@@ -448,6 +448,14 @@ Window {
         source: bg
         z: 0
     }
+
+    Connections{
+        target: backend
+
+        function onPrintTime(Time){
+            labelRightinfo.text = Time
+        }
+    }
 }
 
 /*##^##

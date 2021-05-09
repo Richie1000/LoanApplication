@@ -1,17 +1,34 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import os
+import datetime
 
 from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine
-from PySide2.QtCore import QObject, Slot, Signal
+from PySide2.QtCore import QObject, Slot, Signal, QTimer
 
 class MainWindow(QObject):
     def __init__(self):
         QObject.__init__(self)
 
+        #QTimer Function
+        self.timer = QTimer()
+        self.timer.timeout.connect(lambda: self.setTime())
+        self.timer.start(1000)
+
+
     #set Name
     setName = Signal(str)
+
+    #Signal setTime
+    printTime = Signal(str)
+
+    #Set Time Function
+    def setTime(self):
+        now = datetime.datetime.now()
+        formatDate = now.strftime("%H:%M:%S ")
+        print(formatDate)
+        self.printTime.emit(formatDate)
 
     @Slot(str)
     def welcomeText(self, name):
