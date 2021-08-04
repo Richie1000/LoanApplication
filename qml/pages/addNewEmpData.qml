@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Imagine 2.3
 
 Item {
+    readonly property string identifier: "addEmpData"
     Rectangle {
         id: rectangle
         color: "#2c313c"
@@ -297,6 +298,10 @@ Item {
                 }
             }
         }
+    }
+    function save(){
+        var ID = 123;
+        backend.addEmpData(ID, txtOccupation.text, txtEmployer.text, txtHighEdu.text, parseInt(txtSSN.text), parseInt(txtTin.text) )
     }
 
 }

@@ -79,7 +79,20 @@ Item {
             anchors.rightMargin: 5
             anchors.bottomMargin: 0
             onClicked: {
-                stackView.push(Qt.resolvedUrl(internal.getPageSource()))
+                if (stackView.currentItem.identifier === "addNewPrimary"){
+                    stackView.currentItem.save()
+                    stackView.push(Qt.resolvedUrl(internal.getPageSource()))
+                }
+
+                else if(stackView.currentItem.identifier ==="addContact"){
+                    stackView.currentItem.save()
+                    stackView.push(Qt.resolvedUrl(internal.getPageSource()))
+                }
+
+                else if(stackView.currentItem.identifier ==="addEmpData"){
+                    stackView.currentItem.save()
+                    stackView.push(Qt.resolvedUrl(internal.getPageSource()))
+                }
 
             }
         }
@@ -93,6 +106,7 @@ Item {
             anchors.rightMargin: 5
             onClicked: {
                 stackView.push(internal.getPrevPage())
+                //backend.addPrimaryData
 
             }
         }

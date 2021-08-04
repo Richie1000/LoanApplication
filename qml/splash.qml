@@ -13,6 +13,8 @@ Window {
     visible: true
     color: "#00000000"
 
+    property int status: 0
+
     //removing the standard titlebar
     flags: Qt.SplashScreen  | Qt.FramelessWindowHint
 
@@ -82,7 +84,7 @@ Window {
                            color: "#55aaff"
                        }
             onClicked: {
-                internal.checkLogin(txtUsername.text,txtPassword.text)
+                backend.authenticate(txtUsername.text, txtPassword.text)
                 backend.welcomeText(txtUsername.text)
             }
 
@@ -291,6 +293,20 @@ Window {
             Keyframe {
                 value: 360
                 frame: 0
+            }
+        }
+    }
+    Connections {
+        target: backend
+
+        function onLoginStatus(auth) {
+            status = auth
+
+            if (status > 0) {
+                var Component = Qt.createComponent("main.qml")
+                var win = Component.createObject()
+                win.show()
+                visible = false
             }
         }
     }

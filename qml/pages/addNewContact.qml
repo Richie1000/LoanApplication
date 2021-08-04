@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Imagine 2.3
 
 Item {
+    readonly property string identifier: "addContact"
     Rectangle {
         id: rectangle
         color: "#2c313c"
@@ -347,6 +348,10 @@ Item {
                 }
             }
         }
+    }
+    function save(){
+        var cus_id = 1123
+        backend.addContact(cus_id, parseInt(txtPhone1.text), parseInt(txtPhone2.text), parseInt(txtSecCont.text), txtEmail.text, txtPosAdd.text, txtResAdd.text)
     }
 
 }

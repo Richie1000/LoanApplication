@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Imagine 2.3
 
 Item {
+    readonly property string identifier: "addNewPrimary"
     Rectangle {
         id: rectangle
         color: "#2c313c"
@@ -169,7 +170,8 @@ Item {
                     anchors.topMargin: 5
 
                     TextInput {
-                        id: textInput
+                        id: firstname
+                        property alias firstName: firstname
                         width: 100
                         color: "#000000"
                         anchors.fill: parent
@@ -192,7 +194,8 @@ Item {
                     anchors.topMargin: 25
                     anchors.rightMargin: 130
                     TextInput {
-                        id: textInput1
+                        id: surname
+                        property alias lastName: surname
                         width: 100
                         color: "#000000"
                         anchors.fill: parent
@@ -215,7 +218,8 @@ Item {
                     anchors.topMargin: 25
                     anchors.rightMargin: 130
                     TextInput {
-                        id: textInput2
+                        id: oname
+                        property alias otherName: oname
                         width: 100
                         color: "#000000"
                         anchors.fill: parent
@@ -238,7 +242,8 @@ Item {
                     anchors.topMargin: 25
                     anchors.rightMargin: 130
                     TextInput {
-                        id: textInput3
+                        id: yob
+                        property alias year: yob
                         width: 100
                         color: "#000000"
                         anchors.fill: parent
@@ -262,7 +267,8 @@ Item {
                     anchors.topMargin: 25
                     anchors.rightMargin: 130
                     TextInput {
-                        id: textInput4
+                        id: mob
+                        property alias month: mob
                         width: 100
                         color: "#000000"
                         text: ""
@@ -287,7 +293,8 @@ Item {
                     anchors.rightMargin: 130
                     anchors.topMargin: 25
                     TextInput {
-                        id: textInput5
+                        id: dob
+                        property alias day: dob
                         width: 100
                         color: "#000000"
                         text: ""
@@ -312,6 +319,7 @@ Item {
                     anchors.topMargin: 25
                     RadioButton {
                         id: rdBtnMale
+                        property alias btnMale: rdBtnMale
                         x: -7
                         y: -7
                         width: 35
@@ -326,6 +334,7 @@ Item {
 
                     RadioButton {
                         id: rdBtnFemale
+                        property alias btnFemale: rdBtnFemale
                         x: -7
                         y: 33
                         width: 36
@@ -372,7 +381,18 @@ Item {
                 }
             }
         }
+
     }
+
+    function save(){
+        var ismale = true;
+        if (rdBtnMale.checked)
+            ismale = true;
+        if (rdBtnFemale.checked)
+            ismale = false;
+        backend.addPrimaryData(firstname.text,surname.text, oname.text, parseInt(yob.text), parseInt(mob.text), parseInt(dob), rdBtnMale)
+    }
+
 
 }
 
