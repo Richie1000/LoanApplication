@@ -97,8 +97,8 @@ ScrollView {
             }
 
             HomeWidgets {
-                id: btnLoanRepayAnalysis
-                text: "Loan Repayment Analysis"
+                id: btnLoanRepayment
+                text: "Loan Repayment "
                 btnIconSource: "../../images/svg_images/customer.svg"
             }
 

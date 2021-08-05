@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.15
 
 Item {
+    readonly property string identifier: "addLoan"
     Rectangle {
         id: rectangle
         color: "#2c313c"
@@ -14,6 +15,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.rightMargin: 5
             anchors.bottomMargin: 0
+            onClicked: save()
         }
 
         Rectangle {
@@ -61,7 +63,7 @@ Item {
                     id: label1
                     height: 60
                     color: "#ffffff"
-                    text: qsTr("Fixed Interest Rate")
+                    text: qsTr("Method")
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: label.bottom
@@ -172,7 +174,7 @@ Item {
                     anchors.rightMargin: 0
                     anchors.leftMargin: 0
                     TextInput {
-                        id: txtFixedInterestRate
+                        id: txtMethod
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.top: parent.top
@@ -199,7 +201,7 @@ Item {
                     anchors.rightMargin: 0
                     anchors.leftMargin: 0
                     TextInput {
-                        id: txtFloatingInterestRate
+                        id: txtGracePeriod
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.top: parent.top
@@ -269,6 +271,41 @@ Item {
                     }
                 }
             }
+
+            Label {
+                id: label6
+                x: 422
+                width: 86
+                height: 32
+                color: "#e9eaeb"
+                text: qsTr("Interest Rate")
+                anchors.top: parent.top
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                anchors.topMargin: 30
+            }
+
+            Rectangle {
+                id: rectangle7
+                y: 30
+                height: 35
+                color: "#ffffff"
+                anchors.left: label6.right
+                anchors.right: parent.right
+                anchors.top: rectangle4.bottom
+                TextInput {
+                    id: txtInterestRate
+                    width: 50
+                    anchors.fill: parent
+                    font.pixelSize: 12
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    clip: true
+                }
+                anchors.rightMargin: 8
+                anchors.leftMargin: 10
+                anchors.topMargin: 35
+            }
         }
 
         Label {
@@ -290,11 +327,15 @@ Item {
         }
     }
 
+    function save(){
+        var loanID = 100;
+        backend.addLoan(txtLoanName.text, loanID, txtMethod.text, parseInt(txtNumberOfTerms.text), parseFloat(txtLoanFees.text), txtGracePeriod.text  )
+    }
+
 }
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.75;height:480;width:640}D{i:8}D{i:9}D{i:4}D{i:12}
-D{i:11}D{i:13}D{i:15}D{i:17}D{i:19}D{i:10}D{i:3}D{i:21}
+    D{i:0;autoSize:true;formeditorZoom:0.75;height:480;width:640}
 }
 ##^##*/

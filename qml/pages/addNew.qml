@@ -34,6 +34,7 @@ Item {
                     pageSource = "addNewFamData.qml"
                     prevPage = "addNewFamData.qml"
                 }
+
                 return pageSource
 
             }
@@ -93,6 +94,11 @@ Item {
                     stackView.currentItem.save()
                     stackView.push(Qt.resolvedUrl(internal.getPageSource()))
                 }
+                else if(stackView.currentItem.identifier ==="addFamData"){
+                    stackView.currentItem.save()
+                    stackView.push(Qt.resolvedUrl(internal.getPageSource()))
+                }
+
 
             }
         }

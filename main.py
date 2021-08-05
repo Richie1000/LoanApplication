@@ -125,6 +125,65 @@ class MainWindow(QObject):
         mycursor.execute("INSERT INTO customer_emp_details VALUES(%s, %s, %s, %s, %s, %s)", (customer_ID, occupation, employer, highest_education, ssn, tin))
         db.commit()
 
+    @Slot(bool, int, str, int, int, int)
+    def addFamData (self, marital_status, children, nok, nok_contact, nok_age, customer_ID):
+        db = mysql.connector.connect(
+            host = "localhost",
+            user = "root",
+            passwd = "",
+            database = "loan_system"
+            )
+        mycursor = db.cursor(buffered =True)
+
+        mycursor.execute("SELECT MAX(cus_ID) FROM customer_primary")
+        values = mycursor.fetchone()
+        for x in values:
+            customer_ID = x + 1
+        mycursor.execute("INSERT INTO customer_family VALUES(%s, %s, %s, %s, %s, %s)", (marital_status, children, nok, nok_contact, nok_age, customer_ID))
+        db.commit()
+
+    @Slot(str, int, str, int, float, int)
+    def addLoan(self, loan_name, loan_id, method, num_of_terms, processing_fee, grace_period):
+        db = mysql.connector.connect(
+            host = "localhost",
+            user = "root",
+            passwd = "",
+            database = "loan_system"
+            )
+        mycursor = db.cursor(buffered =True)
+        mycursor.execute("SELECT MAX(loan_id) FROM loan_products")
+        values = mycursor.fetchone()
+        for x in values:
+            loan_id = x + 1
+        mycursor.execute("INSERT INTO loan_products VALUES(%s, %s, %s, %s, %s, %s)", (loan_name, loan_id, method, num_of_terms, processing_fee, grace_period))
+        db.commit()
+
+    @Slot(int, int, float, float, int, int, int)
+    def addPayment(self, loan_id, assignment_id, amount_Paid, balance, dateOfPayment, officer_Id, customerID):
+        db = mysql.connector.connect(
+            host = "localhost",
+            user = "root",
+            passwd = "",
+            database = "loan_system"
+            )
+        mycursor = db.cursor(buffered =True)
+        customerID1 = (customerID,)
+        mycursor.execute("""SELECT loanAmount FROM loan_assignment WHERE customer_ID = %s """, customerID1)
+        values = mycursor.fetchall()
+        total = 0.0
+        for x in values:
+            total = x
+        mycursor.execute("SELECT amount_paid FROM loan_payment WHERE customer_ID = %s" ,customerID1)
+        values = mycursor.fetchall()
+        balance = 0.0
+        paid = 0.0
+        for x in values:
+            paid = paid + x
+        balance = total - paid
+        dateOfPayment1 = datetime.date.today().isoformat()
+        mycursor.execute("INSERT INTO loan_payment VALUES(%s, %s, %s, %s, %s, %s, %s)" , (loan_id, assignment_id, amount_Paid, balance, dateOfPayment1, officer_Id, customerID))
+        db.commit()
+
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()

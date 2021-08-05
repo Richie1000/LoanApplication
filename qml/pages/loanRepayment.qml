@@ -3,7 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Imagine 2.3
 
 Item {
-    readonly property string identifier: "addFamData"
+    readonly property string identifier: "addRepayment"
     Rectangle {
         id: rectangle
         color: "#2c313c"
@@ -31,7 +31,7 @@ Item {
                     id: label
                     height: 40
                     color: "#ffffff"
-                    text: qsTr("Married")
+                    text: qsTr("Loan ID")
                     anchors.left: parent.left
                     anchors.right: parent.right
                     horizontalAlignment: Text.AlignHCenter
@@ -43,9 +43,9 @@ Item {
 
                 Label {
                     id: label1
-                    height: 40
+                    height: 45
                     color: "#ffffff"
-                    text: qsTr("Spouse Name")
+                    text: qsTr("Assignment id")
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: label.bottom
@@ -59,9 +59,9 @@ Item {
 
                 Label {
                     id: label2
-                    height: 40
+                    height: 45
                     color: "#ffffff"
-                    text: qsTr("Children")
+                    text: qsTr("Amount Paid")
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: label1.bottom
@@ -74,48 +74,16 @@ Item {
                 }
 
                 Label {
-                    id: label3
-                    height: 40
+                    id: label5
+                    height: 45
                     color: "#ffffff"
-                    text: qsTr("Next of Kin")
+                    text: qsTr("Officer ID")
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: label2.bottom
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    anchors.topMargin: 20
-                    anchors.rightMargin: 10
-                    font.pointSize: 12
-                    anchors.leftMargin: 10
-                }
-
-                Label {
-                    id: label4
-                    height: 40
-                    color: "#ffffff"
-                    text: qsTr("Next of Kin Relation")
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: label3.bottom
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 12
-                    anchors.rightMargin: 10
-                    anchors.topMargin: 20
-                    anchors.leftMargin: 10
-                }
-
-                Label {
-                    id: label5
-                    height: 40
-                    color: "#ffffff"
-                    text: qsTr("Next of Kin Contact")
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: label4.bottom
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    anchors.topMargin: 20
+                    anchors.topMargin: 25
                     anchors.rightMargin: 10
                     font.pointSize: 12
                     anchors.leftMargin: 10
@@ -123,18 +91,18 @@ Item {
 
                 Label {
                     id: label6
-                    height: 40
+                    height: 45
                     color: "#ffffff"
-                    text: "Next of Kin Age"
+                    text: qsTr("Customer ID")
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: label5.bottom
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 12
                     anchors.rightMargin: 10
-                    anchors.topMargin: 20
                     anchors.leftMargin: 10
+                    font.pointSize: 12
+                    anchors.topMargin: 30
                 }
             }
         }
@@ -157,62 +125,51 @@ Item {
                 anchors.rightMargin: 100
 
                 Rectangle {
+                    id: rectangle2
+                    width: 100
+                    height: 40
+                    color: "#ffffff"
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.rightMargin: 130
+                    anchors.leftMargin: 30
+                    anchors.topMargin: 0
+
+                    TextInput {
+                        id: txtLoanID
+                        width: 100
+                        color: "#000000"
+                        anchors.fill: parent
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        clip: true
+                    }
+                }
+
+                Rectangle {
                     id: rectangle3
                     width: 100
-                    height: 60
-                    color: "#00000000"
+                    height: 35
+                    color: "#ffffff"
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: rectangle2.bottom
-                    anchors.topMargin: 25
-                    anchors.rightMargin: 50
-                    anchors.leftMargin: 30
-
-                    RadioButton {
-                        id: rdBtnSingle
-                        height: 20
-                        text: qsTr("")
-                        anchors.top: parent.top
-                        anchors.topMargin: 6
-                        rotation: -1.544
-                        display: AbstractButton.IconOnly
-                    }
-
-                    RadioButton {
-                        id: rdBtnMarried
-                        height: 20
-                        text: qsTr("")
-                        anchors.bottom: parent.bottom
-                        anchors.bottomMargin: 2
-                        display: AbstractButton.IconOnly
-                    }
-
-                    Label {
-                        id: label7
-                        width: 54
-                        height: 23
-                        color: "#ffffff"
-                        text: qsTr("Single")
-                        anchors.left: rdBtnSingle.right
-                        anchors.top: parent.top
+                    anchors.topMargin: 30
+                    anchors.rightMargin: 130
+                    TextInput {
+                        id: txtAssID
+                        width: 100
+                        height: 40
+                        color: "#000000"
+                        anchors.fill: parent
+                        font.pixelSize: 12
+                        horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                        anchors.topMargin: 5
-                        font.pointSize: 11
-                        anchors.leftMargin: 5
+                        clip: true
                     }
-
-                    Label {
-                        id: label8
-                        width: 77
-                        height: 20
-                        color: "#ffffff"
-                        text: qsTr("Married")
-                        anchors.left: rdBtnMarried.right
-                        anchors.top: label7.bottom
-                        font.pointSize: 11
-                        anchors.leftMargin: 5
-                        anchors.topMargin: 10
-                    }
+                    anchors.leftMargin: 30
                 }
 
                 Rectangle {
@@ -223,58 +180,12 @@ Item {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: rectangle3.bottom
-                    anchors.topMargin: 25
+                    anchors.topMargin: 30
                     anchors.rightMargin: 130
                     TextInput {
-                        id: txtSpouseName
+                        id: txtAmountPaid
                         width: 100
-                        color: "#000000"
-                        anchors.fill: parent
-                        font.pixelSize: 12
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        clip: true
-                    }
-                    anchors.leftMargin: 30
-                }
-
-                Rectangle {
-                    id: rectangle5
-                    width: 100
-                    height: 35
-                    color: "#ffffff"
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: rectangle4.bottom
-                    anchors.topMargin: 25
-                    anchors.rightMargin: 130
-                    TextInput {
-                        id: txtNoChildren
-                        width: 100
-                        color: "#000000"
-                        anchors.fill: parent
-                        font.pixelSize: 12
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        maximumLength: 2
-                        clip: true
-                    }
-                    anchors.leftMargin: 30
-                }
-
-                Rectangle {
-                    id: rectangle6
-                    width: 100
-                    height: 35
-                    color: "#ffffff"
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: rectangle5.bottom
-                    anchors.topMargin: 25
-                    anchors.rightMargin: 130
-                    TextInput {
-                        id: txtNOK
-                        width: 100
+                        height: 40
                         color: "#000000"
                         anchors.fill: parent
                         font.pixelSize: 12
@@ -288,16 +199,17 @@ Item {
                 Rectangle {
                     id: rectangle7
                     width: 100
-                    height: 35
+                    height: 40
                     color: "#ffffff"
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    anchors.top: rectangle6.bottom
+                    anchors.top: rectangle4.bottom
                     anchors.rightMargin: 130
-                    anchors.topMargin: 25
+                    anchors.topMargin: 40
                     TextInput {
-                        id: txtNOKRelation
+                        id: txtOfficerID
                         width: 100
+                        height: 40
                         color: "#000000"
                         anchors.fill: parent
                         font.pixelSize: 12
@@ -311,16 +223,15 @@ Item {
                 Rectangle {
                     id: rectangle8
                     width: 100
-                    height: 35
+                    height: 40
                     color: "#ffffff"
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.top: rectangle7.bottom
-                    anchors.rightMargin: 130
-                    anchors.topMargin: 25
                     TextInput {
-                        id: txtNOKContact
+                        id: txtCustomerID
                         width: 100
+                        height: 40
                         color: "#000000"
                         anchors.fill: parent
                         font.pixelSize: 12
@@ -328,51 +239,36 @@ Item {
                         verticalAlignment: Text.AlignVCenter
                         clip: true
                     }
-                    anchors.leftMargin: 30
-                }
-
-                Rectangle {
-                    id: rectangle9
-                    width: 100
-                    height: 35
-                    color: "#ffffff"
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: rectangle8.bottom
-                    anchors.topMargin: 20
                     anchors.rightMargin: 130
-                    TextInput {
-                        id: txtNOKAge
-                        width: 100
-                        color: "#000000"
-                        anchors.fill: parent
-                        font.pixelSize: 12
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        clip: true
-                    }
                     anchors.leftMargin: 30
+                    anchors.topMargin: 30
                 }
             }
+        }
+
+        Button {
+            id: btnAddRecord
+            x: 516
+            y: 419
+            text: qsTr("ADD RECORD")
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            anchors.rightMargin: 25
+            anchors.bottomMargin: 20
+            onClicked: save()
         }
     }
 
     function save(){
-        var customer_id = 1123
-        var isMarried = true;
-        if(rdBtnMarried.checked)
-            isMarried = true;
-        if(rdBtnSingle.checked)
-            isMarried =false
-        backend.addFamData(isMarried, parseInt(txtNoChildren.text), parseInt(txtNOK.text), parseInt(txtNOKContact.text), parseInt(txtNOKAge.text), customer_id)
+        var balance = 12.0;
+        var date = 123;
+        backend.addPayment(txtLoanID.text, txtAssID.text, parseFloat(txtAmountPaid.text), balance, date,  txtOfficerID.txt, txtCustomerID.text)
     }
 
 }
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.75;height:480;width:640}D{i:5}D{i:6}D{i:7}D{i:8}
-D{i:9}D{i:10}D{i:3}D{i:2}D{i:14}D{i:13}D{i:15}D{i:17}D{i:19}D{i:21}D{i:23}D{i:25}
-D{i:12}D{i:11}D{i:1}
+    D{i:0;autoSize:true;formeditorZoom:0.75;height:480;width:640}D{i:8}D{i:19}
 }
 ##^##*/

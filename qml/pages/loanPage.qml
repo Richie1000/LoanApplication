@@ -10,7 +10,6 @@ color: "#191c2d"
 radius: 10
 anchors.left: parent.left
 anchors.right: parent.right
-anchors.top: rectangleUpper.bottom
 anchors.bottom: parent.bottom
 anchors.topMargin: 10
 
@@ -107,14 +106,17 @@ ScrollView {
                 text: "View Loan Product"
                 btnIconSource: "../../images/svg_images/edit.svg"
                 onClicked: {
-
+                   stackView.push(Qt.resolvedUrl("loanRepayment.qml"))
                 }
             }
 
             HomeWidgets {
                 id: btnEmailSet2
-                text: "View Loan Agrremment s"
+                text: "Loan Repayment"
                 btnIconSource: "../../images/svg_images/edit.svg"
+                onClicked: {
+                   stackView.push(Qt.resolvedUrl("loanRepayment.qml"))
+                }
             }
             anchors.rightMargin: 0
             rows: 3
